@@ -52,13 +52,14 @@ pipeline {
                 sh '''
                 git config user.email "godfather77701@gmail.com"
                 git config user.name "${GIT_USER_NAME}"
-                #git pull https://${PATTOKEN_}@github.com/God-Father01/ActualProxy.git HEAD:master
+                git pull --rebase https://${PATTOKEN_}@github.com/God-Father01/ActualProxy.git HEAD:master
 
                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" ${WORKSPACE}/manifest/Deployment.yaml
                 
                  
                 
                 git add ${WORKSPACE}/manifest/Deployment.yaml
+                git rebase --continue
                 git commit -m "Replace image tag with ${BUILD_NUMBER}"
                 echo ${GIT_USER_NAME}
 			    echo ${GIT_REPO_NAME}		
