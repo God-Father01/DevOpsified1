@@ -55,7 +55,7 @@ pipeline {
 
                             # Replace the image tag in the Deployment.yaml
                             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" ${WORKSPACE}/manifest/Deployment.yaml
-                            sh 'echo replaced image tag'
+                             echo replaced image tag
                             git status
                             # Stage, commit, and push the changes
                             
