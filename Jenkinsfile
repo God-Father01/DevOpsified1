@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Source Code Checkout') {
             steps {
-                git 'https://github.com/God-Father01/PetClinic.git'
+                sh 'git pull https://github.com/God-Father01/ActualProxy'
             }
         }
 
