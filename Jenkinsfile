@@ -52,6 +52,7 @@ pipeline {
                 sh '''
                 git config user.email "godfather77701@gmail.com"
                 git config user.name "${GIT_USER_NAME}"
+                BUILD_NUMBER=${BUILD_NUMBER}
                 
 
                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" ${WORKSPACE}/manifest/Deployment.yaml
