@@ -63,7 +63,8 @@ pipeline {
                             # Push to GitHub
 			    echo ${GIT_USER_NAME}
 			    echo ${GIT_REPO_NAME}		
-                            git push https://$GITHUB_TOKEN@github.com/$GIT_USER_NAME/$GIT_REPO_NAME.git HEAD:master
+                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master
+
                         '''
                     }
                 }
