@@ -85,7 +85,7 @@ pipeline {
                 git commit -m "Replace image tag with ${BUILD_NUMBER}"
                 echo ${GIT_USER_NAME}
 			    echo ${GIT_REPO_NAME}		
-                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master'''
+                git push https://${SECRET_TEXT}@github.com/God-Father01/ActualProxy.git HEAD:master'''
 
                         
 
