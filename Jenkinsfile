@@ -59,7 +59,7 @@ pipeline {
                 
                  
                 
-                git add ${WORKSPACE}/manifest/Deployment.yaml
+                git add .
                 
                 git commit -m "Replace image tag with ${BUILD_NUMBER}"
                 echo ${GIT_USER_NAME}
