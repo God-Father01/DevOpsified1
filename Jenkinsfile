@@ -81,6 +81,7 @@ pipeline {
             withCredentials([usernameColonPassword(credentialsId: 'PatToken', variable: 'PATTOKEN_')]) {    
                 sh '''git config user.email "godfather77701@gmail.com"
                 git config user.name "${GIT_USER_NAME}"
+                git pull https://${PATTOKEN_}@github.com/God-Father01/ActualProxy.git HEAD:master
                 git add ${WORKSPACE}/manifest/Deployment.yaml
                 git commit -m "Replace image tag with ${BUILD_NUMBER}"
                 echo ${GIT_USER_NAME}
