@@ -55,22 +55,48 @@ pipeline {
 
                             # Replace the image tag in the Deployment.yaml
                             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" ${WORKSPACE}/manifest/Deployment.yaml
-
+                            sh 'echo replaced image tag'
+                            git status
                             # Stage, commit, and push the changes
-                            git add ${WORKSPACE}/manifest/Deployment.yaml
-                            git commit -m "Replace image tag with ${BUILD_NUMBER}"
+                            
 
                             # Push to GitHub
 			    echo ${GIT_USER_NAME}
 			    echo ${GIT_REPO_NAME}		
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master
 
                         '''
                     }
                 }
             }
         }
+    
+    stage('Git login'){
+        environment{
+            GIT_REPO_NAME = "ActualProxy"
+            GIT_USER_NAME = "God-Father01"
+
+        }
+        steps{
+            script{
+            withCredentials([string(credentialsId: '123456', variable: 'SECRET_TEXT')]) {    
+                sh '''git config user.email "godfather77701@gmail.com"
+                git config user.name "${GIT_USER_NAME}"
+                git add ${WORKSPACE}/manifest/Deployment.yaml
+                git commit -m "Replace image tag with ${BUILD_NUMBER}"
+                echo ${GIT_USER_NAME}
+			    echo ${GIT_REPO_NAME}		
+                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:master'''
+
+                        
+
+            }
+        }
+
+    }
+    
+    
+    
     }
 }
-
+}
     
