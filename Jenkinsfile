@@ -40,7 +40,7 @@ pipeline {
 
         stage('Minikube') {
             environment {
-                GIT_REPO_NAME = "PetClinic"
+                GIT_REPO_NAME = "ActualProxy"
                 GIT_USER_NAME = "God-Father01"
             }
             steps {
@@ -61,7 +61,9 @@ pipeline {
                             git commit -m "Replace image tag with ${BUILD_NUMBER}"
 
                             # Push to GitHub
-                            git push -u origin master
+			    echo ${GIT_USER_NAME}
+			    echo ${GIT_REPO_NAME}		
+                            git push https://$GITHUB_TOKEN@github.com/$GIT_USER_NAME/$GIT_REPO_NAME.git HEAD:master
                         '''
                     }
                 }
