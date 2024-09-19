@@ -54,10 +54,10 @@ pipeline {
                             pwd
 
                             # Replace the image tag in the Deployment.yaml
-                            sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" /var/lib/jenkins/workspace/Petclinic/manifest/Deployment.yaml
+                            sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" /manifest/Deployment.yaml
 
                             # Stage, commit, and push the changes
-                            git add /var/lib/jenkins/workspace/Petclinic/manifest/Deployment.yaml
+                            git add /manifest/Deployment.yaml
                             git commit -m "Replace image tag with ${BUILD_NUMBER}"
 
                             # Push to GitHub
