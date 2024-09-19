@@ -56,9 +56,12 @@ pipeline {
                 
 
                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" ${WORKSPACE}/manifest/Deployment.yaml
+
                 
                  
-                
+                git add ${WORKSPACE}/manifest/Deployment.yaml
+                cat ${WORKSPACE}/manifest/Deployment.yaml
+                 
                 git add .
                 
                 git commit -m "Replace image tag with ${BUILD_NUMBER}"
